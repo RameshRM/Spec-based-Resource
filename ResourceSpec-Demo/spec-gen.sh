@@ -1,6 +1,13 @@
 #!/bin/bash
 
-java -Dmodels -Dapis -jar ~/github.com/swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i http://petstore.swagger.io/v2/swagger.json -l jaxrs-cxf -o src --model-package com.rameshrm.models  --api-package com.rameshrm.apis
+codegen=$1
+spec=$2
+lang=$3
+outdir=$4
+apipkg=$5
+modelpkg=$6
+
+java -Dmodels -Dapis -jar $codegen generate -i $spec -l $lang -o $outdir --model-package $modelpkg  --api-package $apipkg
 
 cp -r ./src/gen/java/com/rameshrm/apis ./src/main/java/com/rameshrm
 
